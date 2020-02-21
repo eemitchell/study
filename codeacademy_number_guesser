@@ -1,0 +1,39 @@
+let humanScore = 0;
+let computerScore = 0;
+let currentRoundNumber = 1;
+
+// Write your code below:
+function generateTarget() {
+  return Math.floor(Math.random() * 10);
+}
+function getAbsoluteDistance(guessNumber, actualNumber) {
+  return Math.abs(guessNumber - actualNumber);
+}
+function checkNumberLimit(humanGuess) {
+  if (humanGuess < 0 || humanGuess > 9) {
+    alert("Your Number is out of Range!");
+  }
+}
+function compareGuesses(humanGuess, computerGuess, actualNumber) {
+  checkNumberLimit(humanGuess)
+  
+  //Get difference between human guess and actual number, computer guess and actual number
+  //Get absolute value, whichever is less is the winner (closer to actual number).
+  if (getAbsoluteDistance(humanGuess, actualNumber) <= getAbsoluteDistance(computerGuess, actualNumber)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+function updateScore(winner) {
+  if (winner === 'human') {
+    humanScore+=1;
+  }
+  else if (winner === 'computer') {
+    computerScore+=1;
+  }
+}
+function advanceRound() {
+  currentRoundNumber+=1;
+}
